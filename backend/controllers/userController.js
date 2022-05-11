@@ -78,6 +78,22 @@ class UserController {
             
         }
     }
+    static changeUserPassword = async(req, res) => {
+        const{password, password_confirmation} = req.body
+        if (password && password_confirmation) {
+            if(password !== password_confirmation) {
+                res.send({"status":"failed", "message":"New password and confirm password doesn't match"})
+
+            } else {
+                const salt = await bcrypt.genSalt(10)
+                const newHashPassword = await bcrypt.hash(password, salt)
+
+            }
+
+        } else {
+            res.send({"status":"failed", "message":"All fields are required"})
+        }
+    }
 }
 
 module.exports = UserController;
