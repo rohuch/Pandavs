@@ -7,7 +7,7 @@ const connectDB = async (DATABASE_URL) => {
       dbName: "HamroGarden"
     }
     mongoose.connect(DATABASE_URL, DB_OPTIONS)
-    console.log('connected successfully')
+    console.log('!! Database connected successfully !!')
   } catch (error) {
     console.log(error)
   }
